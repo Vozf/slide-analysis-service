@@ -1,0 +1,2 @@
+from slide_analysis_service.search_service.search_service import SearchService
+

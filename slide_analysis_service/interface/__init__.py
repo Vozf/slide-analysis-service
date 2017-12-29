@@ -1,0 +1,2 @@
+from slide_analysis_service.interface.slide_analysis_service import SlideAnalysisService
+from slide_analysis_service.interface.slide_descriptor import SlideDescriptor

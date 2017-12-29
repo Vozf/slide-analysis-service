@@ -1,0 +1,4 @@
+from slide_analysis_service.descriptors.histogram_descriptor_class import HistogramDescriptor
+from slide_analysis_service.descriptors.test_descriptor_class import TestDescriptor
+all_descriptors = [TestDescriptor, HistogramDescriptor]
+from slide_analysis_service.descriptors.constants import COLOR_RANGE

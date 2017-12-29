@@ -1,0 +1,2 @@
+DATABASE_DEFAULT_NAME = 'descriptor_database'
+DEFAULT_SIMILAR_AMOUNT = 10
