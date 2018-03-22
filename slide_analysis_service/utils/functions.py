@@ -5,6 +5,7 @@ import openslide
 
 from slide_analysis_service.descriptors import all_descriptors
 from slide_analysis_service.utils.tile_class import Tile
+from slide_analysis_service.constants.tile import *
 
 
 def _compose_util(f, g):
@@ -25,13 +26,15 @@ def get_tile_from_coordinates(path, x_coord, y_coord, width, height):
                                                        (width, height)))
 
 
-def get_tiles_coords_from_indexes(indexes, step, img_w):
-    num_cols = int(img_w / step)
+def get_tiles_coords_from_indexes(indexes, step, img_width, img_height):
+    num_cols = int(img_width / step)
     row = (indexes / num_cols).astype(int)
     column = indexes - row * num_cols
-    y_coord = row * step
-    x_coord = column * step
-    return numpy.array([x_coord, y_coord]).T
+    y_coord = (row * step + BASE_TILE_HEIGHT / 2) / img_height
+    x_coord = (column * step + BASE_TILE_WIDTH / 2) / img_width
+    coords = numpy.array([x_coord, y_coord]).T.tolist()
+    return list(map(lambda arr: {"x": arr[0], "y": arr[1], "width": BASE_TILE_WIDTH / img_width,
+                                 "height": BASE_TILE_HEIGHT / img_height}, coords))
 
 
 def get_similarity_map_shape(img_w, img_h, step):

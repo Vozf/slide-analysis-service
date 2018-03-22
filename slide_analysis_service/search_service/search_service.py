@@ -18,7 +18,8 @@ class SearchService:
     def convert_to_tile_coords(self, indexes):
         return get_tiles_coords_from_indexes(indexes,
                                              self.info_obj['step'],
-                                             self.info_obj['img_width'])
+                                             self.info_obj['img_width'],
+                                             self.info_obj['img_height'])
 
     def find_similar(self, rect_top_left_width_height_tuple, n, similarity):
         (top, left, width, height) = rect_top_left_width_height_tuple
