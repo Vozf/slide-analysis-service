@@ -15,8 +15,8 @@ class SlideAnalysisService:
         self.descriptor_directory_path = descriptor_directory_path
         self.similar_amount = similar_amount
 
-    def get_slide(self, imagepath, descriptor):
-        return SlideDescriptor(self, imagepath, descriptor)
+    def get_slide(self, imagepath, descriptor, similarity):
+        return SlideDescriptor(self, imagepath, descriptor, similarity)
 
     def get_directory(self):
         return self.descriptor_directory_path
