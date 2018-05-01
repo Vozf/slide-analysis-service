@@ -2,8 +2,9 @@ import numpy as np
 
 
 class EuclideanSimilarity:
-    def __init__(self, fictive_param):
+    def __init__(self):
         pass
 
-    def compare(self, arr, hist):
-        return 1 / (1 + np.linalg.norm(arr - hist, axis=1))
+    def compare(self, descriptors_array, hist):
+        distances = np.linalg.norm(descriptors_array - hist, axis=1)
+        return 1 - distances / np.sqrt(2)

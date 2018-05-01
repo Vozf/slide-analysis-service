@@ -40,9 +40,14 @@ class DescriptorDatabaseWriteService:
                                                split.tile_height, split.step,
                                                split.width, split.height)
 
+        descr_obj = self.descriptor.get_descriptor_object(tile_stream)
+        descr_array = descr_obj["descriptor_array"]
+        if "descriptor_configuration" in descr_obj:
+            info_obj["descriptor_configuration"] = descr_obj["descriptor_configuration"]
+
         with open(descr_filename, 'wb') as file:
             self._dump_obj(file, info_obj)
-            self._dump_obj(file, self.descriptor.get_descriptor_array(tile_stream))
+            self._dump_obj(file, descr_array)
 
         return descr_filename
 
