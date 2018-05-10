@@ -1,16 +1,15 @@
-import setuptools
+from setuptools import setup, find_packages
 
-import slide_analysis_service
-
-with open('requirements.txt') as file:
-    INSTALL_REQUIRES = [l.strip() for l in file.readlines() if l]
-
-setuptools.setup(name='slide_analysis_service',
-                 version=slide_analysis_service.__version__,
-                 url='https://github.com/Vozf/slide-analysis-service/',
-                 license='???',  # todo: add
-                 description='???',  # todo: add
-                 packages=setuptools.find_packages(exclude=['doc']),
-                 scripts=[],
-                 install_requires=INSTALL_REQUIRES,
-                 )
+setup(
+    name='slide_analysis_service',
+    version='1',
+    packages=find_packages(),
+    install_requires=['matplotlib',
+                      'numpy',
+                      ],
+    url='',
+    license='MIT',
+    author='vozman',
+    author_email='vozman@yandex.ru',
+    description=''
+)
