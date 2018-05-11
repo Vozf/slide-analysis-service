@@ -1,5 +1,6 @@
 import numpy
 import matplotlib.cm as cm
+from PIL import Image
 
 from slide_analysis_service.descriptor_database_service.descriptor_database_read_service_class \
     import DescriptorDatabaseReadService
@@ -25,14 +26,13 @@ class SearchService:
         (top, left, width, height) = rect_top_left_width_height_tuple
         tile = get_tile_from_coordinates(self.imagepath, *(top, left), *(width, height))
         descriptor = self.descriptor.calc(tile)
-
         distances = similarity.compare(self.descriptors_array,
                                        descriptor)
         indexes = numpy.argsort(distances)
 
         return {
             "top_n": self.convert_to_tile_coords(indexes[-n:]),
-            "sim_map": self.create_img_map(self.get_map(distances))
+            "sim_map": Image.fromarray(self.create_img_map(self.get_map(distances)), 'RGB')
         }
 
     def get_map(self, sims):
@@ -43,4 +43,6 @@ class SearchService:
     @staticmethod
     def create_img_map(sim_map):
         map = cm.ScalarMappable(cmap='jet').to_rgba(sim_map, bytes=True)
+        # shape = map.shape
+        # map = map.reshape([shape[1], shape[0], shape[2]])
         return map

@@ -4,7 +4,7 @@ from slide_analysis_service.interface import SlideAnalysisService
 
 
 if __name__ == '__main__':
-    default_img = '/home/vozman/Pictures/46433.svs'
+    default_img = '/home/vozman/Pictures/62447.svs'
     print('Test')
 
     slideAnalysisService = SlideAnalysisService()

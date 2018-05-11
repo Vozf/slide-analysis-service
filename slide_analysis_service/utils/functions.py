@@ -3,9 +3,12 @@ from functools import reduce
 import numpy
 import openslide
 
+from slide_analysis_service.constants.tile import (
+    BASE_TILE_HEIGHT,
+    BASE_TILE_WIDTH,
+)
 from slide_analysis_service.descriptors import all_descriptors
 from slide_analysis_service.utils.tile_class import Tile
-from slide_analysis_service.constants.tile import *
 
 
 def _compose_util(f, g):
@@ -21,20 +24,19 @@ def get_descriptor_class_by_name(name):
 
 
 def get_tile_from_coordinates(path, x_coord, y_coord, width, height):
-    return Tile(x_coord, y_coord, width, height,
-                openslide.open_slide(path).read_region((x_coord, y_coord), 0,
-                                                       (width, height)))
+    return Tile(x_coord, y_coord, width, height, openslide.open_slide(path)
+                .read_region((x_coord, y_coord), 0, (width, height)))
 
 
 def get_tiles_coords_from_indexes(indexes, step, img_width, img_height):
     num_cols = int(img_width / step)
     row = (indexes / num_cols).astype(int)
     column = indexes - row * num_cols
-    y_coord = (row * step + BASE_TILE_HEIGHT / 2) / img_height
-    x_coord = (column * step + BASE_TILE_WIDTH / 2) / img_width
+    y_coord = (row * step)
+    x_coord = (column * step)
     coords = numpy.array([x_coord, y_coord]).T.tolist()
-    return list(map(lambda arr: {"x": arr[0], "y": arr[1], "width": BASE_TILE_WIDTH / img_width,
-                                 "height": BASE_TILE_HEIGHT / img_height}, coords))
+    return list(map(lambda arr: {"x": arr[0], "y": arr[1], "width": BASE_TILE_WIDTH,
+                                 "height": BASE_TILE_HEIGHT}, coords))
 
 
 def get_similarity_map_shape(img_w, img_h, step):
