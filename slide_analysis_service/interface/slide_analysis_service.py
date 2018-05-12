@@ -10,7 +10,7 @@ from slide_analysis_service.utils.functions import get_tile_from_coordinates
 
 
 class SlideAnalysisService:
-    def __init__(self, descriptor_directory_path=os.getcwd() + '/' + DATABASE_DEFAULT_NAME,
+    def __init__(self, descriptor_directory_path='C:\Study\Course\slide_analysis\web_slide_analysis\slide-analysis-service\slide_analysis_service' + '/' + DATABASE_DEFAULT_NAME,
                  similar_amount=DEFAULT_SIMILAR_AMOUNT):
         self.descriptor_directory_path = descriptor_directory_path
         self.similar_amount = similar_amount
