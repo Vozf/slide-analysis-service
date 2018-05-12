@@ -32,7 +32,7 @@ class SearchService:
 
         return {
             "top_n": self.convert_to_tile_coords(indexes[-n:]),
-            "sim_map": Image.fromarray(self.create_img_map(self.get_map(distances)), 'RGB')
+            "sim_map": Image.fromarray(self.create_img_map(self.get_map(distances)), 'RGBA')
         }
 
     def get_map(self, sims):
