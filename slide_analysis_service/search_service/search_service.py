@@ -43,6 +43,6 @@ class SearchService:
     @staticmethod
     def create_img_map(sim_map):
         map = cm.ScalarMappable(cmap='jet').to_rgba(sim_map, bytes=True)
-        # shape = map.shape
-        # map = map.reshape([shape[1], shape[0], shape[2]])
+        shape = map.shape
+        map = map.reshape([shape[1], shape[0], shape[2]])
         return map
