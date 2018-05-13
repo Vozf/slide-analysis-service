@@ -8,3 +8,7 @@ class EuclideanSimilarity:
     def compare(self, descriptors_array, hist):
         distances = np.linalg.norm(descriptors_array - hist, axis=1)
         return 1 - distances / np.sqrt(2)
+
+    @staticmethod
+    def name():
+        return 'Euclidean'

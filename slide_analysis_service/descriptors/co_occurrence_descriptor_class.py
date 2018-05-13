@@ -50,3 +50,7 @@ class CoOccurrenceDescriptor:
                     "indices": indices
                 }
             }
+
+    @staticmethod
+    def name():
+        return 'Co-occurence matrix'

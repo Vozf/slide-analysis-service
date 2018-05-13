@@ -7,11 +7,10 @@ from slide_analysis_service.descriptors import all_descriptors_dict
 from slide_analysis_service.similarities import all_similarities_dict
 
 class SlideDescriptor:
-    def __init__(self, slide_analysis_service, imagepath, descriptor, similarity):
+    def __init__(self, slide_analysis_service, imagepath, descriptor):
         self.slide_analysis_service = slide_analysis_service
         self.imagepath = imagepath
         self.descriptor = all_descriptors_dict[descriptor]()
-        self.similarity = all_similarities_dict[similarity]()
         if self.is_ready():
             self._connect_descriptor_base()
 
@@ -37,6 +36,7 @@ class SlideDescriptor:
         return DescriptorDatabaseWriteService.get_filepath(directory, self.imagepath,
                                                            self.descriptor)
 
-    def find(self, rect):
-        return self.search_service.find_similar(rect, self.slide_analysis_service.similar_amount, self.similarity)
+    def find(self, rect, similarity):
+        return self.search_service.find_similar(rect, self.slide_analysis_service.similar_amount,
+                                                all_similarities_dict[similarity]())
 

@@ -6,6 +6,7 @@ setup(
     packages=find_packages(),
     install_requires=['matplotlib',
                       'numpy',
+                      'scikit-image',
                       ],
     url='',
     license='MIT',

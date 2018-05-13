@@ -10,3 +10,7 @@ class Chi2Similarity:
     def compare(self, descriptors_array, hist):
         distances = 0.5 * np.sum((descriptors_array - hist) ** 2 / (descriptors_array + hist + self.eps), axis=1)
         return 1 - distances
+
+    @staticmethod
+    def name():
+        return 'Chi-squared'

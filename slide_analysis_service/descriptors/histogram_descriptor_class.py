@@ -25,3 +25,7 @@ class HistogramDescriptor:
             return {
                 "descriptor_array": descr_arr
             }
+
+    @staticmethod
+    def name():
+        return 'Intensity histogram'

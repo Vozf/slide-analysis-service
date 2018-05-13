@@ -10,3 +10,7 @@ class LinearSimilarity:
         t = np.promote_types(hist.dtype, np.byte)
         distances = np.sum(np.abs(descriptors_array.astype(t) - hist.astype(t)), axis=1)
         return 1 - distances / 2
+
+    @staticmethod
+    def name():
+        return 'Linear'
