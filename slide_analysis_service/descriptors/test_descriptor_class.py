@@ -6,3 +6,7 @@ class TestDescriptor:
         (r, g, b, a) = tile.data[0]
         value = r + g + b
         return value
+
+    @staticmethod
+    def name():
+        return 'Test Descriptor'

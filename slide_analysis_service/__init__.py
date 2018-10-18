@@ -4,20 +4,19 @@ from slide_analysis_service.interface import SlideAnalysisService
 
 
 if __name__ == '__main__':
-    default_img = '/home/vozman/Pictures/46433.svs'
+    default_img = '/home/vozman/Pictures/62447.svs'
     print('Test')
 
     slideAnalysisService = SlideAnalysisService()
     print(slideAnalysisService.get_descriptors())
     print(slideAnalysisService.get_similarities())
     print(slideAnalysisService.get_directory())
-    slide = slideAnalysisService.get_slide(default_img,
-                                           slideAnalysisService.get_descriptors()[1]())
+    slide = slideAnalysisService.get_slide(default_img, 'histogram')
     print(slide)
     print(slide.is_ready())
     if not slide.is_ready():
         slide.precalculate()
-    similar = slide.find((0, 0, 256, 256), slideAnalysisService.get_similarities()[1]())
+    similar = slide.find((0, 0, 256, 256), 'euclidean')
     print(similar)
 
     print('All done')
