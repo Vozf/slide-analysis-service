@@ -7,6 +7,7 @@ setup(
     install_requires=['matplotlib',
                       'numpy',
                       'scikit-image',
+                      'scipy',
                       ],
     url='',
     license='MIT',
