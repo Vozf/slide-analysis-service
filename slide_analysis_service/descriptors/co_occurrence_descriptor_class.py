@@ -28,7 +28,7 @@ class CoOccurrenceDescriptor:
         rate = 0.005 * (8 * tile.width * tile.height - 6 * tile.width - 6 * tile.height + 4)
         indices = numpy.where(vect >= rate)[0]
         value = self.normalize(vect[indices])
-        return numpy.array([indices, value])
+        return [indices, value]
 
     def calc(self, tile, configuration):
         mat = self._count_mat(tile)
@@ -41,7 +41,7 @@ class CoOccurrenceDescriptor:
             indices = numpy.empty([0], dtype=numpy.int32)
             for descr in descr_obj:
                 indices = numpy.union1d(indices, descr[0])
-            descr_arr = numpy.zeros([len(descr_obj), len(indices)], dtype=numpy.int32)
+            descr_arr = numpy.zeros([len(descr_obj), len(indices)])
             for i in range(len(descr_obj)):
                 descr_arr[i][numpy.searchsorted(indices, descr_obj[i][0])] = descr_obj[i][1]
             return {
