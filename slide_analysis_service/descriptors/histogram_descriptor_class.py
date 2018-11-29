@@ -28,4 +28,4 @@ class HistogramDescriptor:
 
     @staticmethod
     def name():
-        return 'Intensity histogram'
+        return 'Color histogram'

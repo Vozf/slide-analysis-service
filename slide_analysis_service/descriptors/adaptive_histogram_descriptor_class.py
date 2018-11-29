@@ -35,4 +35,4 @@ class AdaptiveHistogramDescriptor:
 
     @staticmethod
     def name():
-        return 'Adaptive Intensity histogram'
+        return 'Adaptive Color histogram'

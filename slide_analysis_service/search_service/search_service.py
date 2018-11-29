@@ -1,6 +1,8 @@
 import numpy
 import matplotlib.cm as cm
 from PIL import Image
+import pickle
+from pathlib import Path
 
 from slide_analysis_service.descriptor_database_service.descriptor_database_read_service_class \
     import DescriptorDatabaseReadService
@@ -46,7 +48,16 @@ class SearchService:
 
     @staticmethod
     def create_img_map(sim_map):
-        map = cm.ScalarMappable(cmap='jet').to_rgba(sim_map, bytes=True)
+        # with open('sim_map.out', 'wb') as fp:
+        #     pickle.dump(sim_map, fp)
+        map = cm.ScalarMappable(cmap=SearchService.get_colormap('NIH.lut')).to_rgba(sim_map, bytes=True)
+        # map = cm.ScalarMappable(cmap='jet').to_rgba(sim_map, bytes=True)
         shape = map.shape
         map = map.reshape([shape[1], shape[0], shape[2]])
         return map
+
+    @staticmethod
+    def get_colormap(name):
+        rootdir = str(Path(__file__).parents[1])
+        with open(rootdir + '/luts/' + name, 'rb') as palette_file:
+            return pickle.load(palette_file)
