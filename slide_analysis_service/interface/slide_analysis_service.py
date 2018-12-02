@@ -1,14 +1,15 @@
 import os
+from pathlib import Path
 
 from slide_analysis_service.descriptors import all_descriptors_dict
 from slide_analysis_service.interface.slide_descriptor import SlideDescriptor
-from slide_analysis_service.interface.constants import DATABASE_DEFAULT_NAME,\
+from slide_analysis_service.interface.constants import DATABASE_DEFAULT_NAME, \
     DEFAULT_SIMILAR_AMOUNT
 from slide_analysis_service.similarities import all_similarities_dict
 
 
 class SlideAnalysisService:
-    def __init__(self, descriptor_directory_path=os.getcwd() + '/' + DATABASE_DEFAULT_NAME,
+    def __init__(self, descriptor_directory_path=str(Path(os.getcwd()) / DATABASE_DEFAULT_NAME),
                  similar_amount=DEFAULT_SIMILAR_AMOUNT):
         self.descriptor_directory_path = descriptor_directory_path
         self.similar_amount = similar_amount
