@@ -14,5 +14,6 @@ setup(
     license='MIT',
     author='vozman',
     author_email='vozman@yandex.ru',
-    description=''
+    description='',
+    include_package_data=True,
 )
