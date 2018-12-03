@@ -3,3 +3,4 @@ matplotlib
 openslide-python
 scikit-image
 scipy
+tqdm

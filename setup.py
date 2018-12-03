@@ -8,6 +8,7 @@ setup(
                       'numpy',
                       'scikit-image',
                       'scipy',
+                      'tqdm',
                       ],
     url='',
     license='MIT',
