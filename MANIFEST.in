@@ -1,1 +1,2 @@
 include slide_analysis_service/descriptors/palette.out
+include slide_analysis_service/luts/*.lut
