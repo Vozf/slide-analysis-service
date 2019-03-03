@@ -53,4 +53,4 @@ class CoOccurrenceDescriptor:
 
     @staticmethod
     def name():
-        return 'Co-occurence matrix'
+        return 'Color Co-occurence'
