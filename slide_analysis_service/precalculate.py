@@ -12,7 +12,8 @@ from slide_analysis_service import SlideAnalysisService
 
 def precalculate(path, recursive=False):
     saserv = SlideAnalysisService()
-    img_paths = glob.glob(str(Path(path) / '**' / '*.*'), recursive=recursive)
+    img_paths = glob.glob(str(Path(path) / ('**' if recursive else '') / '*.*'),
+                          recursive=recursive)
     print(f'Found total {len(img_paths)} files'
           f' and {len(SlideAnalysisService.get_descriptors().keys())} descriptors')
     for path in tqdm(img_paths):
