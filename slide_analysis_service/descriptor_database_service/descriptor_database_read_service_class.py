@@ -20,4 +20,4 @@ class DescriptorDatabaseReadService:
 
     @staticmethod
     def _load_obj(file):
-        return numpy.load(file)
+        return numpy.load(file, allow_pickle=True)
