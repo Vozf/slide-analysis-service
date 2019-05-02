@@ -10,7 +10,7 @@ from tqdm import tqdm
 from slide_analysis_service import SlideAnalysisService
 
 
-def precalculate(path, recursive=False):
+def precalculate(path, recursive=False, tqdm=tqdm):
     saserv = SlideAnalysisService()
     img_paths = glob.glob(str(Path(path) / ('**' if recursive else '') / '*.*'),
                           recursive=recursive)
